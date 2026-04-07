@@ -1,10 +1,13 @@
 # About
-White hat hacker in South Korea
+## *Junior Security Researcher | Gyeongbuk Software Meister High School*
 
+> **Intersets**
+>
+> ```Web Vulnerability Research``` ```Malware Analysis``` ```Security Consulting```
+
+> **Award(s)**
+> - ```경북소프트웨어마이스터고등학교 RCE 동아리 CTF - 장려상 수장```
+
+![Dreamhack Stats](https://dreamhack-readme-stats.vercel.app/api/stats?username=hannamoon)
 
 ::github{repo="hannamoon09/hnm.webhack.dev"}
-
-> ### Sources of images used in this site
-> - [Unsplash](https://unsplash.com/)
-> - [星と少女](https://www.pixiv.net/artworks/108916539) by [Stella](https://www.pixiv.net/users/93273965)
-> - [Rabbit - v1.4 Showcase](https://civitai.com/posts/586908) by [Rabbit_YourMajesty](https://civitai.com/user/Rabbit_YourMajesty)
