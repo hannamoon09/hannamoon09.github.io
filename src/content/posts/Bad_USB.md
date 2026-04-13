@@ -1,9 +1,9 @@
 ---
 title: Bad_USB
 published: 2026-04-10
-description: ''
-tags: [Project]
-category: 'Hobby'
+description: 'This is my self-defense weapon.'
+tags: [Personal Project]
+category: 'Dev'
 draft: false 
 lang: 'ko'
 ---
@@ -15,4 +15,29 @@ lang: 'ko'
 
 일반적인 USB의 구성: USB connector - Controller - Flash memory
 
+### flash memory type
+1. Method
+    1. SLC(Single Level Cell): 1개의 기억소자당 1비트(0, 1)의 데이터를 저장
+        - 장점: 안정성이 높음, 데이터 처리 속도 빠름
+        - 단점: 비싼 가격
+    2. MLC(Multi-Level Cell): 1개의 기억소자당 2비트(00, 01, 10, 11) 이상의 데이터를 저장할 수 있음
+        - 장점: 저렴한 가격 -> 대량 생상 가능
+        - 단점: 안정성 낮음, 데이터 처리 속도 느림
+2. Floating Gate Transistor
+    1. NOR flash
+        - 장점: 속도 빠름
+        - 단점: 대용량으로 구성하기 부적합
+    2. NAND flash
+        - 장점: 대용량으로 구성하기 적합
+        - 단점: 속도 느림
+3. By manufacturing process
+    1. TSOP memory
+        - 특징: 칩과 보드가 핀과 같은 라인으로 연결되어 있음
+        - 장점: 라인이 밖으로 나와 있어서 칩과 보드와의 분리가 간편함
+    2. BGA memory
+        - 장점: 기존의 QFP나 TSOP에 비해 적은 면적을 차지함, 리드간 간격이 비교적 넓어서 노이즈나 간섭의 영향을 덜 받고 발열이 좋음
+        - 단점: 습기, 충격에 취약함
+    3. COB memory
+        - 장점: 방수, 방진에 효과가 좋음
+        - 단점: 물리적인 손상이 되었을 경우 복구가 쉽지 않음
 ```
