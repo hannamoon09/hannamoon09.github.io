@@ -40,4 +40,12 @@ lang: 'ko'
     3. COB memory
         - 장점: 방수, 방진에 효과가 좋음
         - 단점: 물리적인 손상이 되었을 경우 복구가 쉽지 않음
+
+## USB Descriptor
+1. USB Descriptor 정의
+    - USB는 대표적인 PnP(Plug & Play)를 지원하는 인터페이스
+        - 디바이스에 대한 정보 및 설정 사항을 알기 위해 Descriptor를 읽어 와야 함
+        - Host가 Device에게 Device에 대한 정보를 요구하고, Device가 자신의 정보를 전달 이때 사용하는 정보 의미
+    - 연결된 디바이스의 종류를 알게 되고, 디바이스의 특성에 맞게 데이터 전송량을 조절할 수 있음
+    - USB Enumeration(열거) 과정에서 중요하게 사용
 ```
