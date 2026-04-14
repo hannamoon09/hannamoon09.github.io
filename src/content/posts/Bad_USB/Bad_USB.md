@@ -48,4 +48,14 @@ lang: 'ko'
         - Host가 Device에게 Device에 대한 정보를 요구하고, Device가 자신의 정보를 전달 이때 사용하는 정보 의미
     - 연결된 디바이스의 종류를 알게 되고, 디바이스의 특성에 맞게 데이터 전송량을 조절할 수 있음
     - USB Enumeration(열거) 과정에서 중요하게 사용
+2. USB Descriptor 종류
+    - Device Descriptor: 디바이스에 대한 일반정보, 단 하나의 descriptor존재
+    - Configuration Descriptor: 하나 또는 이상의 Descriptor 기술 가능
+                              : 여러 가지의 인터페이스 기술 가능
+                              : 인터페이스 또한 여러 개의 End-Point 정의 기술 가능
+    - Interface Descriptor: 인터페이스 내용 기술, Alternate setting을 가질 수 있음
+    - Endpoint Descriptor: pipe, endpoint 0은 descriptor가 존재하지 않음
+    - String Descriptor: unicode format, vender 이름, 디바이스 이름, serial number
+    <img src="./USB.png">
+    ![alt](./USB.png)
 ```
