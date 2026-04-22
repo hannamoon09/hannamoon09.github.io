@@ -1,5 +1,5 @@
 ---
-title: Bad_USB
+title: Bad USB
 published: 2026-04-10
 description: 'This is my self-defense weapon.'
 tags: [Personal Project]

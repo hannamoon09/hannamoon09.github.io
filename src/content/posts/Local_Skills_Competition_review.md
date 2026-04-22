@@ -1,5 +1,5 @@
 ---
-title: Local_Skills_Competition_review
+title: Local Skills Competition review
 published: 2026-04-10
 description: 'my first skills competition'
 image: ""
