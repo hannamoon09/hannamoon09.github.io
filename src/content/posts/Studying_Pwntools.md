@@ -1,19 +1,13 @@
 ---
-title: Introduction to CryptoGraphy
+title: Pwntools for Cryptography
 published: 2026-04-22
-description: "I'm studying Cryptography"
+description: "I'm studying Pwntools"
 image: ''
-tags: [Crypto]
+tags: [Study]
 category: 'Study'
 draft: false 
 lang: 'ko'
 ---
-
-## Crypto Studying
-```markdown
-**Date**: 2026-4-21 ~ Current
-**Reffer**: Dreamhack
-```
 
 ## Organize notes
 ```markdown
@@ -79,4 +73,31 @@ lang: 'ko'
     2. 언패킹 함수
         - u8(), u16(), u32(), u64() -> 함수명 뒤에 붙은 숫자는 패킹을 수행할 때 bytes 클래스의 비트 수를 의미함
     - 패킹 및 언패킹 함수는 기본적으로 리틀 엔디안으로 동작함(endian='big'으로 빅 엔디안 사용 가능)
+
+6. GDB
+    - 역할: 프로그램을 한 줄식 실행해 보거나 중간에 프로그램의 상태를 확인할 수 있는 등 프로그램을 분석하기 위한 다양한 기능이 있음
+
+    1. attach 예제
+        1. gdb.attach(p) -> GDB가 붙어서 해당 프로세스는 중지되고 GDB 터미널이 열려 디버깅을 수행할 수 있는 상태가 됨
+    - process()로 생성한 객체 이외에 remote()로 생성한 객체나 프로세스의 PID를 전달해도 됨
+    - 하지만 remote()로 생성한 객체를 전달할 경우 remote()로 접속한 프로세스가 같은 장치에서 실행되고 있어 디버깅이 가능한 프로세스인 경우만 허용됨
+
+7. Assemble & Disassemble
+    - 어셈블리 언어(Assembly Language)는 컴퓨터의 가장 기초적이고 하드워어에 가까운 프로그래밍 언어로 CPU가 직접 실행하는 명령어인 기계어(Machine Code)를 사람이 이해할 수 있도록 표현한 것
+    - 어셈블(Assemble)은 **어셈블리 언어를 기계어로 변환**하는 것을 의미하고, 디스어셈블(Disassemble)은 **기계어로 어셈블리 언어로 변환**하는 것을 의미
+
+    1. 어셈블리 언어 관련 명령어 예제
+        1. context.arch = "amd64" -> 아키텍처를 설정할 수 있음
+        - 아키텍쳐마다 어셈블리 언어와 기계어가 다르기 때문에 어셈블과 디스어셈블을 올바르게 수행하기 위해 아키텍처를 적절하게 설정할 필요가 있음
+        2. machine_code = asm('mov eax, 0') -> 어셈블리 'mov eax, 0'를 기계어로 변환
+        3. assembly_code = disasm(machine_code) -> 기계어를 어셈블리어로 변환
+
+8. ELF
+    - ELF(Excutable and Linable Format)는 리눅스 운영체제의 실행 파일 형식
+    - pwntools에서 ELF() 함수의 인자에 ELF 파일의 경로를 넣으면 pwnlib.elf.elf.ELF 클래를 반환함
+
+    1. ELF 관련 명령어 예제
+        1. e.symbols['write'] 혹은 e.symbols.write -> e 변수에 담긴 ELF 파일의 write라는 함수의 심볼 주소를 가져옴
+        - symbols 함수 설명: symbols 멤버 변수는 심볼들의 주소들을 가지고 있는 doctdict 클래스임. doctdict 클래스는 pwntools 내부에 구현된 클래스로 기존의 딕셔너리처럼 사용할 수 있으면서도 속성으로 접근이 가능하게 구현되어 있음
+    - symbols에서 제공하는 주소는 **가상 주소**임 -> PIE(Position Independent Excutable) 보호 기법이 있으면 상대 가상 주소(Relative Virtual Address), 없으면 가상 주소를 제공함
 ```
