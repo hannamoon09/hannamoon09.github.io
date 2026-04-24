@@ -23,6 +23,7 @@ import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-copy-button.js";
+import { fileURLToPath } from "node:url";
 
 // https://astro.build/config
 export default defineConfig({
@@ -153,6 +154,13 @@ export default defineConfig({
 		],
 	},
 	vite: {
+		resolve: {
+			alias: {
+				"@components": fileURLToPath(
+					new URL("./src/components", import.meta.url)
+				),
+			},
+		},
 		build: {
 			rollupOptions: {
 				onwarn(warning, warn) {
