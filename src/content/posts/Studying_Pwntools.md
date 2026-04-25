@@ -1,17 +1,17 @@
 ---
-title: Pwntools for Cryptography
+title: Studying Pwntools
 published: 2026-04-22
 description: "I'm studying Pwntools"
 image: ''
 tags: [Study]
-category: 'Study'
+category: 'Crypto'
 draft: false 
 lang: 'ko'
 ---
 
 ## Organize notes
 ```markdown
-## About pwntools
+## About Pwntools
 1. 연결을 맺는 함수
     - 통신을 위해선 연결을 맺어야함. 다음 설명하는 함수들이 성공적으로 실행되면 *pwnlib.tubes*클래스를 반환함
     - **pwnlib.tubes**: 데이터를 주고받을 수 있는 다양한 함수들이 구현되어 있어 이후 편리하게 데이터를 송수신할 수 있음
