@@ -1,9 +1,9 @@
 ---
 title: Tools for Modern Cryptography
 published: 2026-04-25
-description: "I'm studying Cryptography"
+description: "I'm studying tools for Modern Cryptography"
 image: ''
-tags: [Study]
+tags: [Study, Crypto, tools, Math]
 category: 'Crypto'
 draft: false 
 lang: 'ko'

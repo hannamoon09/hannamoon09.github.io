@@ -3,15 +3,15 @@ title: Studying Pwntools
 published: 2026-04-22
 description: "I'm studying Pwntools"
 image: ''
-tags: [Study]
+tags: [Study, tools]
 category: 'Crypto'
 draft: false 
 lang: 'ko'
 ---
 
 ## Organize notes
-```markdown
-## About Pwntools
+
+### About Pwntools
 1. 연결을 맺는 함수
     - 통신을 위해선 연결을 맺어야함. 다음 설명하는 함수들이 성공적으로 실행되면 *pwnlib.tubes*클래스를 반환함
     - **pwnlib.tubes**: 데이터를 주고받을 수 있는 다양한 함수들이 구현되어 있어 이후 편리하게 데이터를 송수신할 수 있음
@@ -100,4 +100,3 @@ lang: 'ko'
         1. e.symbols['write'] 혹은 e.symbols.write -> e 변수에 담긴 ELF 파일의 write라는 함수의 심볼 주소를 가져옴
         - symbols 함수 설명: symbols 멤버 변수는 심볼들의 주소들을 가지고 있는 doctdict 클래스임. doctdict 클래스는 pwntools 내부에 구현된 클래스로 기존의 딕셔너리처럼 사용할 수 있으면서도 속성으로 접근이 가능하게 구현되어 있음
     - symbols에서 제공하는 주소는 **가상 주소**임 -> PIE(Position Independent Excutable) 보호 기법이 있으면 상대 가상 주소(Relative Virtual Address), 없으면 가상 주소를 제공함
-```

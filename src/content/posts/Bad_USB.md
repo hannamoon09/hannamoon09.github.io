@@ -10,7 +10,6 @@ lang: 'ko'
 
 # 공부 한 것들 정리
 
-```markdown
 ## USB Structure
 
 일반적인 USB의 구성: USB connector - Controller - Flash memory
@@ -57,4 +56,3 @@ lang: 'ko'
     - Endpoint Descriptor: pipe, endpoint 0은 descriptor가 존재하지 않음
     - String Descriptor: unicode format, vender 이름, 디바이스 이름, serial number
     
-```

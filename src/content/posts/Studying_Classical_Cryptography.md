@@ -1,7 +1,7 @@
 ---
-title: Studying Classical cipher
+title: Studying Classical Cryptography
 published: 2026-04-24
-description: "I'm studying Crytography"
+description: "I'm studying Classical Crytography"
 image: ''
 tags: [Crypto]
 category: 'Crypto'
@@ -29,7 +29,7 @@ lang: 'ko'
 
             대표적인 예시: 비제네르 암호(Vigenere cipher)
                 - 각 행에서 평문의 문자에 대응되는 문자로 평문을 치환
-![Vigenere](/src/content/posts/Crypto/Vigenere.png)
+![Vigenere](./Crypto/Vigenere.png)
 
     2. 전치(Transposition) 암호
         - 설명: 평문 문자들의 위치를 바꾸는 것
