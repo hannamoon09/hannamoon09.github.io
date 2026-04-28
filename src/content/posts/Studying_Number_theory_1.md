@@ -1,5 +1,5 @@
 ---
-title: Studying Number theory
+title: Studying Number theory 1
 published: 2026-04-26
 description: "I'm studying Number theory"
 image: ''
@@ -11,7 +11,7 @@ lang: 'ko'
 
 ## Organize notes
 
-### 정수론
+### 정수론 1
 - 설명: 수학의 한 분야로, 정수와 관련된 다양한 성질을 다루는 학문
     - 암호학에서 사용되는 정수론에서는 모든 자연수나 정수 범위보다도, 특정 값으로 나누는 나머지 연산이 높은 비중을 차지함
 
@@ -75,10 +75,102 @@ lang: 'ko'
         - 설명: 서로소인 두 modulus p,q 위에서 각각 x의 값이 유일하게 정해지는 경우, x는 modulus p * q 위에서도 항상 유일한 해가 존재한다.
 
         1. 해의 존재성
-            - 증명: x ≡ a (mod p), x ≡ b (mod q)일 때, x ≡ c (mod p * q)의 C 값을 구하는 방법
+            - 증명할 것: x ≡ a (mod p), x ≡ b (mod q)일 때, x ≡ c (mod p * q)의 c 값을 구하는 방법
                 1. q * β ≡ 1 (mod p)
                 2. p * α ≡ 1 (mod q)
                 3. 이 때, c = a * q * β + b * p * α로 정의하면 c ≡ a (mod p), c ≡ b (mod q)이 성립함을 알 수 있음
                 4. c ≡ a * q * β + b * p * α ≡ a * q * β ≡ a * (q * β) ≡ a * 1 ≡ a (mod p)
                 5. c ≡ a * q * β + b * p * α ≡ b * p * α ≡ b * (p * α) ≡ b * 1 ≡ b (mod q)
-                
+                    - x ≡ c (mod p * q)일 때, x ≡ a (mod p), x ≡ b (mod q)를 만족하는 c가 항상 존재함
+
+        2. 해의 유일성
+            - 증명할 것: 해의 존재성에서 구한 c 이외의 다른 해는 존재하지 않고, c만이 유일한 해인 이유
+                1. c<sub>0</sub>이라는 값이 존재하여 c와 c<sub>0</sub>는 p * q로 나눈 나머지가 서로 다르고, c<sub>0</sub> ≡ a(mod p), c<sub>0</sub> ≡ b (mod q)을 만족한다고 가정
+                2. c<sub>0</sub> ≡ a ≡ c (mod p)이고, c<sub>0</sub> ≡ b ≡ c (mod q)이므로,  c<sub>0</sub> - c는 p, q의 배수임
+                3. p, q가 서로소이기 때문에, c<sub>0</sub> - c는 p * q의 배수이어야 하고, 이는 c와 c<sub>0</sub>는 p * q로 나눈 나머지가 서로 다르다는 가정에 모순이 있음
+                    - 따라서 구한 c = a * q * β + b * p * α가 p * q의 modulus 위에서 유일한 해인 것이 증명됨
+
+    5. **Exponentiation by squaring**
+        - 용도: 큰 지수에 대한 거듭제곱을 연산할 때 사용되는 방법
+
+        - e >= n에 대하여 n<sup>e</sup>을 구하는 알고리즘
+            1. e = 0인 경우: 곱셈의 항등원 반환
+            2. e이 0보다 큰 짝수인 경우: n<sup>e/2</sup>의 값을 구하여 (n<sup>e/2</sup>)<sup>2</sup> 반환
+            3. e이 0보다 큰 홀수인 경우: n<sup>(e-1)/2</sup>의 값을 구하여 n * (n<sup>e-1/2</sup>)<sup>2</sup> 반환
+                - 일반 정수 범위에서 큰 거듭제곱을 연산할 일은 없지만, modulus 위에서의 연산인 경우 메모리 관련 문제가 없고, 큰 지수에 대한 거듭제곱을 계산할 일이 굉장히 많기 때문에 modulus 위에서의 거듭제곱 연산은 Exponentiation by squaring을 사용하기 적합함
+
+```python
+def gcd(a, b): # 유클리드 알고리즘
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+
+def xgcd(a, b): # 확장 유클리드 알고리즘
+    if b == 0:
+        # a = g = a * 1 + b * 0
+        return a, 1, 0
+             
+    g, x1, y1 = xgcd(b, a % b)
+    # g = x1 * b + y1 * (a % b)
+    x = y1
+    y = (g - a * x) // b
+    assert a * x + b * y == g
+
+    return g, x, y
+
+
+def inverse(a, m): # 역원
+    g, x, y = xgcd(a, m)
+
+    if g != 1:
+        # Inverse doesn't exist.
+        return None
+    return x
+
+
+def crt(rem, mod): # 중국인의 나머지 정리에서 해의 존재성을 증명
+    a, b = rem
+    p, q = mod
+    g, alpha, beta = xgcd(p, q)
+    assert g == 1
+
+    c = a * q * beta + b * p * alpha
+    final_mod = p * q
+    c %= final_mod
+
+    assert c % p == a
+    assert c % q == b
+
+    return c, final_mod
+
+
+def crt_multi(rem, mod): # 중국인의 나머지 정리에서 해의 유일성을 증명
+    c = 0
+    final_mod = 1
+    for a, p in zip(rem, mod):
+        c, final_mod = crt([c, a], [final_mod, p])
+
+    for a, p in zip(rem, mod):
+        assert c % p == a
+
+    return c, final_mod
+
+
+def mypow(n, e, m): # Exponentiation by squaring
+    if e < 0:
+        if gcd(n, m) == 1:
+            return mypow(inverse(n, m), -e, m)
+        else:
+            # Inverse doesn't exist.
+            return None
+
+    elif e == 0:
+        return 1
+
+    elif e % 2 == 0:
+        return mypow(n, e // 2, m)**2 % m
+
+    else:
+        return n * mypow(n, (e - 1) // 2, m)**2 % m
+```
